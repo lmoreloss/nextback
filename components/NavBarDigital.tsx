@@ -30,7 +30,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
+              href="/"
               className="relative overflow-hidden h-6 group"
             >
               <span className="block cursor-pointer transition duration-300 hover:text-sky-500">
@@ -91,7 +91,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
+              href="/"
               onClick={() => setIsMenuOpen(false)} // Close menu on click
               className="hover:text-indigo-600 transition-colors"
             >

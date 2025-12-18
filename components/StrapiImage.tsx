@@ -21,6 +21,7 @@ export function getStrapiMedia(url: string | null) {
   // Use env variable or fallback to localhost
   const STRAPI_URL =
     process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+  console.log(`23${STRAPI_URL}${url}`);
   return `${STRAPI_URL}${url}`;
 }
 
@@ -33,15 +34,19 @@ export default function StrapiImage({ src, ...props }: StrapiImageProps) {
 
   // LOGIC: If we are running on localhost, disable optimization to avoid
   // the "private ip" error. In production, this will use standard Next.js optimization.
-  const isLocalhost =
-    imageUrl.includes("localhost") || imageUrl.includes("127.0.0.1");
+  // const isLocalhost =
+  //   imageUrl.includes("localhost") || imageUrl.includes("127.0.0.1");
+  const shouldSkipOptimization =
+    imageUrl.includes("localhost") ||
+    imageUrl.includes("127.0.0.1") ||
+    imageUrl.includes("192.168.");
 
   return (
     <Image
       {...props}
       src={imageUrl}
       // Force unoptimized if on localhost, otherwise let Next.js optimize it
-      unoptimized={isLocalhost}
+      unoptimized={shouldSkipOptimization}
       // Optional: Add a loader if you want to control the URL generation specifically
     />
   );
