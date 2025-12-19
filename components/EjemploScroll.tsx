@@ -19,7 +19,12 @@ const CarModel = () => {
   const groupRef = useRef<THREE.Group>(null);
 
   // Load assets
-  const fbx = useLoader(FBXLoader, "/car_1.fbx"); // Ensure path has /
+  const [fbx, digisols, gondola, carro2] = useLoader(FBXLoader, [
+    "/car_1.fbx",
+    "/digisols.fbx",
+    "/gondola.fbx",
+    "/car_2.fbx",
+  ]); // Ensure path has /
   let [texture1, texture2] = useLoader(THREE.TextureLoader, [
     "/Car Texture 1.png",
     "/Car Texture 2.png",
@@ -35,6 +40,36 @@ const CarModel = () => {
     });
     return geom;
   }, [fbx]);
+
+  const geo2 = useMemo(() => {
+    let geom: THREE.BufferGeometry | undefined;
+    digisols.traverse((item) => {
+      if (item instanceof THREE.Mesh) {
+        geom = item.geometry;
+      }
+    });
+    return geom;
+  }, [digisols]);
+
+  const geo3 = useMemo(() => {
+    let geom: THREE.BufferGeometry | undefined;
+    gondola.traverse((item) => {
+      if (item instanceof THREE.Mesh) {
+        geom = item.geometry;
+      }
+    });
+    return geom;
+  }, [digisols]);
+
+  const geo4 = useMemo(() => {
+    let geom: THREE.BufferGeometry | undefined;
+    carro2.traverse((item) => {
+      if (item instanceof THREE.Mesh) {
+        geom = item.geometry;
+      }
+    });
+    return geom;
+  }, [digisols]);
 
   // --- THE GSAP ANIMATION ---
   // useGSAP(() => {
@@ -233,6 +268,30 @@ const CarModel = () => {
               transparent={true}
               wireframe={false}
             />
+          </mesh>
+          <mesh
+            geometry={geo2}
+            scale={4}
+            position={[-1, 1, 0]}
+            rotation={[convertirARadianes(270), 0, 0]}
+          >
+            <meshPhysicalMaterial transparent={true} wireframe={true} />
+          </mesh>
+          <mesh
+            geometry={geo3}
+            scale={1}
+            position={[-2, -1, 0]}
+            rotation={[Math.PI / 2, 0, 0]}
+          >
+            <meshPhysicalMaterial transparent={true} wireframe={true} />
+          </mesh>
+          <mesh
+            geometry={geo4}
+            scale={1}
+            position={[2, -1, 0]}
+            rotation={[Math.PI / 2, 0, 0]}
+          >
+            <meshPhysicalMaterial transparent={true} wireframe={true} />
           </mesh>
         </Center>
       </Float>
