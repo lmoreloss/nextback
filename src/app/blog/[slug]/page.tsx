@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import StrapiImage from "../../../../components/StrapiImage";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -11,18 +10,12 @@ async function getArticleBySlug(slug: string) {
   const STRAPI_URL =
     process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
-  // 1. Prepare the query
-  // We use 'filters' to find the specific slug
-  // We use 'populate=*' to get images and relations
   const query = new URLSearchParams({
     "filters[slug][$eq]": slug,
     populate: "*",
   });
 
   const res = await fetch(`${STRAPI_URL}/api/articles?${query}`, {
-    // Cache configuration:
-    // 'force-cache' = Static Generation (SSG) - fast, build time
-    // 'no-store' = Server Side Rendering (SSR) - always fresh
     cache: "force-cache",
   });
 
@@ -38,7 +31,7 @@ async function getArticleBySlug(slug: string) {
 }
 
 interface PageProps {
-  params: Promise<{ slug: string }>; // Next.js 15 requires params to be a Promise
+  params: Promise<{ slug: string }>;
 }
 
 export default async function ArticlePage({ params }: PageProps) {
@@ -54,9 +47,10 @@ export default async function ArticlePage({ params }: PageProps) {
   }
 
   return (
-    <div>
+    <div className="bg-[linear-gradient(to_right,#0172bf,#00ade5,#0172bf)] h-auto min-h-100vh">
       <NavBarDigital></NavBarDigital>
-      <article className="max-w-3xl mx-auto py-10 px-4">
+      <div className="pt-24"></div>
+      <article className="max-w-3xl mx-auto py-10 px-4 bg-black/20 rounded-xl">
         {/* Header Section */}
         <header className="mb-8">
           <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
@@ -81,6 +75,14 @@ export default async function ArticlePage({ params }: PageProps) {
           <ReactMarkdown remarkPlugins={[remarkGfm, remarkRehype, rehypeRaw]}>
             {article.TextoMarkdown}
           </ReactMarkdown>
+        </div>
+        <div className="grid grid-cols-2">
+          <div>
+            <p className="text-start">Entrada anterior</p>
+          </div>
+          <div>
+            <p className="text-end">Entrada siguiente</p>
+          </div>
         </div>
       </article>
     </div>

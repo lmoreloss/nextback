@@ -5,12 +5,11 @@ import React, { useState } from "react";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Define links here to map them (DRY principle)
   const navLinks = [
-    { name: "Nosotros", path: "/" },
-    { name: "Casos de Exito", path: "/" },
-    { name: "Blog", path: "/" },
-    { name: "Contacto", path: "/" },
+    { name: "Nosotros", path: "/quienes-somos" },
+    { name: "Casos de Exito", path: "/casos-exito" },
+    { name: "Blog", path: "/blog" },
+    { name: "Contacto", path: "/contacto" },
   ];
 
   return (
@@ -30,7 +29,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href="/"
+              href={link.path}
               className="relative overflow-hidden h-6 group"
             >
               <span className="block cursor-pointer transition duration-300 hover:text-sky-500">
@@ -91,7 +90,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href="/"
+              href={link.path}
               onClick={() => setIsMenuOpen(false)} // Close menu on click
               className="hover:text-indigo-600 transition-colors"
             >

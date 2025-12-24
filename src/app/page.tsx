@@ -1,6 +1,6 @@
 "use client";
 import NavBarDigital from "../../components/NavBarDigital";
-import gsap, { random } from "gsap";
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextPlugin } from "gsap/TextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,12 +11,7 @@ import Link from "next/link";
 import StrapiImage from "../../components/StrapiImage";
 import * as THREE from "three";
 import { createRoot } from "react-dom/client";
-import { Canvas, useFrame, ThreeElements, useLoader } from "@react-three/fiber";
-import {
-  FBXLoader,
-  GLTFLoader,
-  OrbitControls,
-} from "three/examples/jsm/Addons.js";
+import { useFrame, ThreeElements } from "@react-three/fiber";
 import EjemploScroll from "../../components/EjemploScroll";
 
 export interface Article {
