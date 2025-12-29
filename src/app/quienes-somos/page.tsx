@@ -1,3 +1,4 @@
+import FooterDigital from "../../../components/FooterDigital";
 import NavBarDigital from "../../../components/NavBarDigital";
 
 export default function funcion() {
@@ -14,6 +15,7 @@ export default function funcion() {
       <NavBarDigital></NavBarDigital>
       <div className="pt-24"></div>
       <p>Llevamos mas de {anios} años en el mercado</p>
+      <FooterDigital></FooterDigital>
     </div>
   );
 }

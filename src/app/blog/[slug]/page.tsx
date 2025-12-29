@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import remarkRehype from "remark-rehype";
 import NavBarDigital from "../../../../components/NavBarDigital";
+import FooterDigital from "../../../../components/FooterDigital";
 
 async function getArticleBySlug(slug: string) {
   const STRAPI_URL =
@@ -85,6 +86,7 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
         </div>
       </article>
+      <FooterDigital></FooterDigital>
     </div>
   );
 }

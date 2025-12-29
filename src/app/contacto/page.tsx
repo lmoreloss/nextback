@@ -1,3 +1,4 @@
+import FooterDigital from "../../../components/FooterDigital";
 import NavBarDigital from "../../../components/NavBarDigital";
 
 export default function funcion() {
@@ -9,15 +10,15 @@ export default function funcion() {
         <p className="text-xs bg-indigo-200 text-indigo-600 font-medium px-3 py-1 rounded-full">
           Contactanos
         </p>
-        <h1 className="text-4xl px-2 font-bold py-4 text-center text-slate-300">
+        <h1 className="text-4xl px-2 font-bold py-4 text-center text-slate-200">
           ¿En que te podemos ayudar?
         </h1>
 
         <div className="max-w-96 pb-4 w-full px-4 ">
-          <label htmlFor="name" className="font-medium text-slate-400">
+          <label htmlFor="name" className="font-medium text-slate-300">
             Nombre o Razon social
           </label>
-          <div className="flex items-center mt-2 mb-4 h-10 pl-3 border border-slate-300 rounded-full focus-within:ring-2 focus-within:ring-indigo-400 transition-all overflow-hidden">
+          <div className="flex items-center mt-2 mb-4 h-10 pl-3 border border-slate-200 rounded-full focus-within:ring-2 focus-within:ring-indigo-400 transition-all overflow-hidden">
             <svg
               width="20"
               height="20"
@@ -27,7 +28,7 @@ export default function funcion() {
             >
               <path
                 d="M18.311 16.406a9.64 9.64 0 0 0-4.748-4.158 5.938 5.938 0 1 0-7.125 0 9.64 9.64 0 0 0-4.749 4.158.937.937 0 1 0 1.623.938c1.416-2.447 3.916-3.906 6.688-3.906 2.773 0 5.273 1.46 6.689 3.906a.938.938 0 0 0 1.622-.938M5.938 7.5a4.063 4.063 0 1 1 8.125 0 4.063 4.063 0 0 1-8.125 0"
-                fill="#87a1c4ff"
+                fill="#ccccccff"
               />
             </svg>
             <input
@@ -40,11 +41,11 @@ export default function funcion() {
 
           <label
             htmlFor="email-address"
-            className="font-medium mt-4 text-slate-400"
+            className="font-medium mt-4 text-slate-300"
           >
             Direccion de correo electronico
           </label>
-          <div className="flex items-center mt-2 mb-4 h-10 pl-3 border border-slate-300 rounded-full focus-within:ring-2 focus-within:ring-indigo-400 transition-all overflow-hidden">
+          <div className="flex items-center mt-2 mb-4 h-10 pl-3 border border-slate-200 rounded-full focus-within:ring-2 focus-within:ring-indigo-400 transition-all overflow-hidden">
             <svg
               width="20"
               height="20"
@@ -54,7 +55,7 @@ export default function funcion() {
             >
               <path
                 d="M17.5 3.438h-15a.937.937 0 0 0-.937.937V15a1.563 1.563 0 0 0 1.562 1.563h13.75A1.563 1.563 0 0 0 18.438 15V4.375a.94.94 0 0 0-.938-.937m-2.41 1.874L10 9.979 4.91 5.313zM3.438 14.688v-8.18l5.928 5.434a.937.937 0 0 0 1.268 0l5.929-5.435v8.182z"
-                fill="#8ba6cbff"
+                fill="#ccccccff"
               />
             </svg>
             <input
@@ -65,12 +66,12 @@ export default function funcion() {
             />
           </div>
 
-          <label htmlFor="message" className="font-medium mt-4 text-slate-400">
+          <label htmlFor="message" className="font-medium mt-4 text-slate-300">
             Tu mensaje
           </label>
           <textarea
             rows={4}
-            className="w-full mt-2 p-2 bg-transparent text-slate-200 border border-slate-400 rounded-lg resize-none outline-none focus:ring-2 focus-within:ring-indigo-400 transition-all"
+            className="w-full mt-2 p-2 bg-transparent text-slate-200 border border-slate-300 rounded-lg resize-none outline-none focus:ring-2 focus-within:ring-indigo-400 transition-all"
             placeholder="Queremos multiples pantallas..."
             required
           ></textarea>
@@ -96,6 +97,7 @@ export default function funcion() {
           </button>
         </div>
       </form>
+      <FooterDigital></FooterDigital>
     </div>
   );
 }
