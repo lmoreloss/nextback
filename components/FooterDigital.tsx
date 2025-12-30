@@ -2,23 +2,29 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import MorphSVGPlugin from "gsap/MorphSVGPlugin";
+import logoDigisols from "/ddigisolsHorizontal.png";
 
 export default function NavbarDigital() {
   const linkSections = [
     {
       title: "Acceso rapido",
       links: [
-        "Inicio",
-        "Acerca de Nosotros",
-        "Casos de Exito",
-        "Blog",
-        "Contacto",
-        "Mapa del Sitio",
+        { nombre: "Inicio", ruta: "/" },
+        { nombre: "Acerca de Nosotros", ruta: "/quienes-somos" },
+        { nombre: "Casos de Exito", ruta: "/casos-exito" },
+        { nombre: "Blog", ruta: "/blog" },
+        { nombre: "Contacto", ruta: "/contacto" },
+        { nombre: "Mapa del Sitio", ruta: "/" },
       ],
     },
     {
       title: "Siguenos",
-      links: ["Instagram", "Twitter", "Facebook", "YouTube"],
+      links: [
+        { nombre: "Instagram", ruta: "/" },
+        { nombre: "Twitter", ruta: "/" },
+        { nombre: "Facebook", ruta: "/" },
+        { nombre: "YouTube", ruta: "/" },
+      ],
     },
   ];
 
@@ -62,7 +68,7 @@ export default function NavbarDigital() {
         <div>
           <img
             className="w-55 md:w-50 justify-self-center"
-            src="ddigisolsHorizontal.png"
+            src="/ddigisolsHorizontal.png"
             alt="dummyLogoColored"
           />
           <p className="max-w-[410px] mt-6 text-gray-300 max-sm:text-center">
@@ -79,8 +85,8 @@ export default function NavbarDigital() {
               <ul className="text-sm space-y-1 text-gray-300">
                 {section.links.map((link, i) => (
                   <li key={i}>
-                    <a href="#" className="hover:underline transition">
-                      {link}
+                    <a href={link.ruta} className="hover:underline transition">
+                      {link.nombre}
                     </a>
                   </li>
                 ))}
@@ -92,7 +98,7 @@ export default function NavbarDigital() {
 
       <div className="absolute bottom-0 left-0 w-full z-10 pb-4">
         <p className="text-center text-sm md:text-base text-white/90 font-medium">
-          Copyright 2025 © <a href="#">Señalizacion Especializada Digital</a>
+          Copyright 2025 © <a href="/">Señalizacion Especializada Digital</a>
         </p>
       </div>
     </div>

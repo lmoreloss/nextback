@@ -15,28 +15,8 @@ import { useFrame, ThreeElements } from "@react-three/fiber";
 import EjemploScroll from "../../components/EjemploScroll";
 import FooterDigital from "../../components/FooterDigital";
 
-export interface Article {
-  id: string;
-  title: string;
-  cover: any;
-  description: string;
-  publishedAt: Date;
-  TextoMarkdown: string;
-  slug: string;
-  summary: string;
-}
-
 const App = () => {
   gsap.registerPlugin(useGSAP, TextPlugin, ScrollTrigger, MorphSVGPlugin);
-
-  const [articles, setArticles] = useState<Article[]>([]);
-  const STRAPI_URL = "http://127.0.0.1:1337";
-
-  const getArticles = async () => {
-    const response = await fetch(`${STRAPI_URL}/api/articles?populate=*`);
-    const data = await response.json();
-    setArticles(data.data);
-  };
 
   const edos = useRef<HTMLParagraphElement>(null);
   const contadorEdos = { val: 0 };
@@ -44,10 +24,6 @@ const App = () => {
   const contadorTeles = { val: 0 };
   const emps = useRef<HTMLParagraphElement>(null);
   const contadorEmps = { val: 0 };
-
-  useEffect(() => {
-    getArticles();
-  }, []);
 
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLElement>(".card");
