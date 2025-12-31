@@ -20,14 +20,14 @@ const CarModel = () => {
 
   // Load assets
   const [fbx, digisols, gondola, carro2] = useLoader(FBXLoader, [
-    "/car_1.fbx",
-    "/digisols.fbx",
-    "/gondola.fbx",
-    "/car_2.fbx",
+    "/models/car_1.fbx",
+    "/models/digisols.fbx",
+    "/models/gondola.fbx",
+    "/models/car_2.fbx",
   ]); // Ensure path has /
   let [texture1, texture2] = useLoader(THREE.TextureLoader, [
-    "/Car Texture 1.png",
-    "/Car Texture 2.png",
+    "/textures/Car Texture 1.png",
+    "/textures/Car Texture 2.png",
   ]);
 
   // Extract Geometry

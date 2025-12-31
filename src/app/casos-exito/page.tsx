@@ -36,7 +36,7 @@ export default function funcion() {
                     font-family: 'Poppins', sans-serif;
                 }
             `}</style>
-            <div className="col-span-1 bg-black/20 rounded-sm px-2">
+            <div className="col-span-1 bg-black/20 rounded-2xl px-2">
               <h1 className="text-3xl font-semibold text-center mx-auto">
                 Casos de Exito
               </h1>
@@ -44,7 +44,7 @@ export default function funcion() {
                 Nuestros proyectos completados, ayudando a nuestros clientes a
                 ser mejores
               </p>
-              <div className="flex items-center gap-6 h-[400px] w-full max-w-5xl mt-10 mx-auto">
+              <div className="flex [&>:last-child>*:last-child]:rounded-r-2xl [&>:first-child>*:last-child]:rounded-l-2xl [&>:first-child>*:first-child]:rounded-l-2xl [&>:last-child>*:first-child]:rounded-r-2xl items-center gap-6 h-[400px] w-full max-w-5xl mt-10 mx-auto">
                 <div className="relative group flex-grow transition-all w-56 h-[400px] duration-500 hover:w-full">
                   <img
                     className="h-full w-full object-cover object-center"
@@ -94,7 +94,7 @@ export default function funcion() {
             </div>
           </>
           <div>
-            <section className="flex flex-col items-center justify-center px-4 md:px-0">
+            <section className="flex flex-col items-center justify-center px-4 md:px-0 bg-black/20 rounded-2xl">
               <h1 className="text-3xl font-semibold text-center mx-auto">
                 Nuestros partners
               </h1>

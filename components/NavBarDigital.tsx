@@ -18,7 +18,7 @@ const Navbar = () => {
         {/* Logo */}
         <a href="/" className="block w-32 md:w-40">
           <img
-            src="/ddigisolsHorizontal.png"
+            src="/images/ddigisolsHorizontal.png"
             alt=""
             className="drop-shadow-sm/80"
           />

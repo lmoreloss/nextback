@@ -68,7 +68,7 @@ export default function NavbarDigital() {
         <div>
           <img
             className="w-55 md:w-50 justify-self-center"
-            src="/ddigisolsHorizontal.png"
+            src="/images/ddigisolsHorizontal.png"
             alt="dummyLogoColored"
           />
           <p className="max-w-[410px] mt-6 text-gray-300 max-sm:text-center">
