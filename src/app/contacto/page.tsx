@@ -1,12 +1,65 @@
+"use client";
+
+import { useState } from "react";
 import FooterDigital from "../../../components/FooterDigital";
 import NavBarDigital from "../../../components/NavBarDigital";
 
 export default function funcion() {
+  const [formData, setFormData] = useState({
+    nombre: "",
+    correo: "",
+    mensaje: "",
+  });
+
+  const [status, setStatus] = useState(""); // loading | success | error
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      // Replace with your actual Strapi URL
+      const STRAPI_URL =
+        process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+
+      const response = await fetch(`${STRAPI_URL}/api/correos`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            Nombre: formData.nombre,
+            Correo: formData.correo,
+            Mensaje: formData.mensaje,
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al enviar");
+      }
+
+      setStatus("success");
+      setFormData({ nombre: "", correo: "", mensaje: "" });
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  };
   return (
     <div className="bg-[linear-gradient(to_right,#0172bf,#00ade5,#0172bf)] h-auto min-h-screen">
       <NavBarDigital></NavBarDigital>
       <div className="pt-24"></div>
-      <form className="flex max-w-3xl mx-auto flex-col items-center text-sm text-slate-800 bg-black/20 rounded-4xl">
+      <form
+        onSubmit={handleSubmit}
+        className="flex max-w-3xl mx-auto flex-col items-center text-sm text-slate-800 bg-black/20 rounded-4xl"
+      >
         <p className="text-xs bg-indigo-200 text-indigo-600 font-medium px-3 py-1 rounded-full">
           Contactanos
         </p>
@@ -35,6 +88,9 @@ export default function funcion() {
               type="text"
               className="h-full px-2 w-full outline-none bg-transparent text-slate-200"
               placeholder="Juan Perez"
+              value={formData.nombre}
+              name="nombre"
+              onChange={handleChange}
               required
             />
           </div>
@@ -62,6 +118,9 @@ export default function funcion() {
               type="email"
               className="h-full px-2 w-full outline-none bg-transparent text-slate-200"
               placeholder="ejemplo@dominio.com"
+              value={formData.correo}
+              name="correo"
+              onChange={handleChange}
               required
             />
           </div>
@@ -73,16 +132,42 @@ export default function funcion() {
             rows={4}
             className="w-full mt-2 p-2 bg-transparent text-slate-200 border border-slate-300 rounded-lg resize-none outline-none focus:ring-2 focus-within:ring-indigo-400 transition-all"
             placeholder="Queremos multiples pantallas..."
+            value={formData.mensaje}
+            name="mensaje"
+            onChange={handleChange}
             required
           ></textarea>
 
           <button
+            disabled={
+              status === "loading" || status === "success" || status === "error"
+            }
             type="submit"
-            className="flex items-center justify-center gap-1 mt-5 bg-indigo-500 hover:bg-indigo-600 text-white py-2.5 w-full rounded-full transition"
+            className={`
+    flex items-center justify-center gap-1 mt-5 py-2.5 w-full rounded-full transition text-white
+    ${status === "success" ? "bg-green-500 hover:bg-green-600" : ""}
+    ${status === "error" ? "bg-red-500 hover:bg-red-600" : ""}
+    ${
+      status === "" || status === "loading"
+        ? "bg-indigo-500 hover:bg-indigo-600"
+        : ""
+    }
+    ${
+      status === "success" || status === "error"
+        ? "cursor-not-allowed opacity-100"
+        : ""
+    }
+  `}
           >
-            Enviar
+            {/* 4. Dynamic Text */}
+            {status === "loading" && "Enviando..."}
+            {status === "success" && "Mensaje enviado. Te contactaremos"}
+            {status === "error" && "Error al enviar"}
+            {status === "" && "Enviar"}
+
+            {/* 5. Icon: Only show when status is empty (idle) */}
             <svg
-              className="mt-0.5"
+              className={`mt-0.5 ${status !== "" ? "hidden" : "block"}`}
               width="21"
               height="20"
               viewBox="0 0 21 20"
